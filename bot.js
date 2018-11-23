@@ -1564,30 +1564,41 @@ client.on('message', message => {
 	
 	
 	
- 
 client.on('message', message => {
-    if (message.content.startsWith("-avatar")) {
-if(!message.channel.guild) return;
-
+    if (message.content.startsWith(prefix + "avatar")) {
         var mentionned = message.mentions.users.first();
-
-    var client;
+    var x5bzm;
       if(mentionned){
-          var client = mentionned;
+          var x5bzm = mentionned;
       } else {
-          var client = message.author;
-
+          var x5bzm = message.author;
+          
       }
-
         const embed = new Discord.RichEmbed()
-                           .addField('Requested by:', "<@" + message.author.id + ">")
-
-        .setColor(000000)
-        .setFooter(PP Community, 'https://cdn.discordapp.com/attachments/504639610882752512/507817067127242762/PPCommuinty.png')
-        .setImage(${client.avatarURL})
+        .setColor("RANDOM")
+        .setImage(`${x5bzm.avatarURL}`)
       message.channel.sendEmbed(embed);
     }
 });
+
+
+client.on("message", message => {
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content === prefix + "image"){ 
+          const embed = new Discord.RichEmbed()
+  
+      .setTitle(` ** ${message.guild.name} **  صورة سيرفر`)
+  .setAuthor(message.author.username, message.guild.iconrURL)
+    .setColor(0x164fe3)
+    .setImage(message.guild.iconURL)
+    .setURL(message.guild.iconrURL)
+                    .setTimestamp()
+
+   message.channel.send({embed});
+      }
+  });
+
  
  
  
@@ -1645,6 +1656,8 @@ client.on("message", message => {
 💎-روم1
 
 💎-avatar
+
+💎-image
 
 💎-cv
 
